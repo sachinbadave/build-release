@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sachin.devops</groupId>
+  <artifactId>sachin.devops</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <github.global.server>github-sachin</github.global.server>
+  </properties>
+
+  <name>Java-MongoDB-DevOps</name>
+  
+  <scm>
+	<url>https://github.com/sachinbadave/build-release</url>
+	<connection>scm:git:https://github.com/sachinbadave/build-release.git</connection>
+	<developerConnection>scm:git:git@github.com:sachinbadave/build-release.git</developerConnection>
+	<tag>HEAD</tag>
+  </scm>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+	            <groupId>com.github.github</groupId>
+	            <artifactId>site-maven-plugin</artifactId>
+	            <version>0.12</version>
+	            <configuration>
+	                <path>${project.version}</path>
+	                <message>Maven artifacts for ${project.version}</message>
+	                <noJekyll>true</noJekyll>
+	                <outputDirectory>/var/jenkins_home/releases/target</outputDirectory>
+	                <branch>refs/heads/releaseForDocker</branch>
+	                <includes><include>**/*</include></includes>
+	                <force>true</force>
+	            </configuration>
+	            <executions>
+	              <execution>
+	                <goals>
+	                  <goal>site</goal>
+	                </goals>
+	                <phase>deploy</phase>
+	              </execution>
+	            </executions>
+        	</plugin>
+  	</plugins>
+  </build>
+</project>
