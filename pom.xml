@@ -7,7 +7,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github-sachin</github.global.server>
@@ -28,30 +27,52 @@
 	<tag>HEAD</tag>
   </scm>
   
+  <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>3.8.1</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+      	<groupId>org.mongodb</groupId>
+      	<artifactId>mongodb-driver</artifactId>
+      	<version>3.3.0</version>
+      </dependency>
+  </dependencies>
+  
   <build>
-    	<plugins>
+	<plugins>
 		<plugin>
-  	            <groupId>com.github.github</groupId>
-  	            <artifactId>site-maven-plugin</artifactId>
-  	            <version>0.12</version>
-  	            <configuration>
-  	                <message>Maven artifacts for ${project.version}</message>
-  	                <noJekyll>true</noJekyll>
-  	                <outputDirectory>/var/jenkins_home/releases/target</outputDirectory>
-  	                <branch>refs/heads/releaseForDocker</branch>
-  	                <includes><include>**/*</include></includes>
-  	                <force>true</force>
-  	            </configuration>
-  	            <executions>
-  	              <execution>
-  	                <goals>
-  	                  <goal>site</goal>
-  	                </goals>
-  	                <phase>deploy</phase>
-  	              </execution>
-  	            </executions>
-          	</plugin>
-    	</plugins>
+		<groupId>org.codehaus.mojo</groupId>
+		<artifactId>exec-maven-plugin</artifactId>
+		<version>1.5.0</version>
+		<configuration>
+			<mainClass>org.sachin.devops.mongodb.trials.Trial</mainClass>
+		</configuration>
+	</plugin>
+	<plugin>
+		<groupId>com.github.github</groupId>
+		<artifactId>site-maven-plugin</artifactId>
+		<version>0.12</version>
+		<configuration>
+			<message>Maven artifacts for ${project.version}</message>
+			<noJekyll>true</noJekyll>
+			<outputDirectory>/var/jenkins_home/releases/target</outputDirectory>
+			<branch>refs/heads/releaseForDocker</branch>
+			<includes><include>**/*</include></includes>
+			<force>true</force>
+		</configuration>
+		<executions>
+			<execution>
+				<goals>
+				  <goal>site</goal>
+				</goals>
+				<phase>deploy</phase>
+			</execution>
+		</executions>
+		</plugin>
+	</plugins>
   </build>
   
 </project>
