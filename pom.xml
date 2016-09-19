@@ -65,7 +65,7 @@
 			<configuration>
 				<message>Maven artifacts for ${project.version}</message>
 				<noJekyll>true</noJekyll>
-				<outputDirectory>/var/jenkins_home/releases/target</outputDirectory>
+				<outputDirectory>/var/jenkins_home/releases</outputDirectory>
 				<branch>refs/heads/releaseForDocker</branch>
 				<includes><include>**/*</include></includes>
 				<force>true</force>
